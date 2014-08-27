@@ -17,5 +17,5 @@ if [[ "$mode" == "run" ]]; then
 elif [[ "$mode" == "clean" ]]; then
     run_tiniba.sh -r erase
     run_tiniba.sh -r erasescf
-    rm -rf .ab_layers.d .acell.d .back.layers back.layers.xy eigen_* .fnval .front.layers front.layers.xy half_slab.* .i* layers.d* .lista_layers logfiles/ .machines_pmn .machines_scf .machines_latm .machines_res me_* mtita .peso* si_as_6_* *.klist* si_as_6.xyz.original spin_info symmetries/ .trueMachines
+    rm -rf .ab_layers.d .acell.d .back.layers back.layers.xy eigen_* .fnval .front.layers front.layers.xy half_slab.* hoy* .i* layers.d* .lista_layers logfiles/ .machines_pmn .machines_scf .machines_latm .machines_res me_* mtita opt.dat .peso* si_as_6_* *.klist* si_as_6.xyz.original spin_info symmetries/ .trueMachines
 fi
