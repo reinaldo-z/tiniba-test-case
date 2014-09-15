@@ -9,7 +9,7 @@ if [[ "$mode" == "run" ]]; then
     rlayer.sh 4.788090 1 4 1 1
     chose_layers.sh half-slab
     run_tiniba.sh -r setkp -k 19 -g 2 -G 2 
-    run_tiniba.sh -r run -k 19 -N half-slab -x 2 -w
+    run_tiniba.sh -r run -k 19 -N half-slab -x 2 -C 4 -w
     run_tiniba.sh -r run -k 19 -N half-slab -x 2 -e
     run_tiniba.sh -r run -k 19 -N half-slab -x 2 -p
     run_tiniba.sh -r run -k 19 -N half-slab -x 2 -c
