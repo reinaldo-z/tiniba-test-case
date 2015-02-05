@@ -107,4 +107,5 @@ kptopt2             0
 prtwf2              0
 kssform2            3
 nsym2               1 
+tolwfr2             1.0d-12
 ###
