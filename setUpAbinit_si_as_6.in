@@ -18,8 +18,8 @@ xcart
   Section: Pseudo-potential files
 ######################################################
 
-psps/33as.5.hgh
-psps/14si.4.hgh
+/home/sma/tiniba/pseudopotentials/hgh/33as.5.hgh
+/home/sma/tiniba/pseudopotentials/hgh/14si.4.hgh
 
 ######################################################
   Section: Common Variables
