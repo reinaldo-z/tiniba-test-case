@@ -7,7 +7,7 @@ if [[ "$mode" == "run" ]]; then
     abinit_check.sh 1
     abinit_check.sh 2
     odd_rank.sh
-    rklist.sh 13 13 2 abinit
+    rklist.sh 15 15 2 abinit
     rlayer.sh 4.788090 1 4 1 1
     chose_layers.sh half-slab
     #run_tiniba.sh -r setkp -k 40 -g 2 -G 2 
