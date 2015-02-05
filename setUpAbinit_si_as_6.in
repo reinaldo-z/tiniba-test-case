@@ -1,5 +1,10 @@
 # This is the input file used to set up abinit calculations
-# Comments are just accepted at the beggining of a line, otherwise it will fail. 
+# 1=>SCF calculation; 2=>Wave-Function for each k; 3=>KSS file for each k
+# Run 2 and 3 are in the same abinit input file, thus 
+# they have 1 and 2 as postfixes, respectively.
+# Comments are just accepted at the beggining of a line, otherwise it will fail.###
+### For KSS set nbandkss2=nband
+### 
 # You must not remove the lines that appear as "Section: "
 ######################################################
 
@@ -13,8 +18,8 @@ xcart
   Section: Pseudo-potential files
 ######################################################
 
-/home/sma/tiniba/pseudopotentials/hgh/33as.5.hgh
-/home/sma/tiniba/pseudopotentials/hgh/14si.4.hgh
+psps/33as.5.hgh
+psps/14si.4.hgh
 
 ######################################################
   Section: Common Variables
@@ -28,13 +33,14 @@ xcart
 prtvol      10
 
 ### Definition of the unit cell
-chkprim     1 
 chksymbreak 0
+chkprim     1 
 # a0=5.43 a0b = 10.26121212 Bohr
+## scaling factor = 25 * 52.9177249 = 1322.9431225
 acell       7.255773198 7.255773198 25
-rprim       0.8660254037844385  -.5 0.0
-            0       1.0   0.0
-            0.0     0.0   1.0 
+rprim       0.8660254037844385  -0.5    0.0
+            0.0000000000000000   1.0    0.0
+            0.0000000000000000   0.0    1.0 
 
 ### Definition of the atom types
 ntypat      2
@@ -45,22 +51,16 @@ natom       6
 typat       1*1 4*2 1*1
 
 ## spin-orbit
-so_psp         1 1
-nspinor        1 1
+### For KSS comment spin-related variables ###
+#so_psp         1 1
+#nspinor        1 1
 ##
-toldfe1        1.0d-6
-kptopt1        1
-nshiftk1       1
-shiftk1        0. 0. 0.5
 
 nsppol         1
- 
-## change for convergence
-ngkpt1        8 8 2
 
 ### Definition of the planewave basis set
 
-ecut          5
+ecut           5
 
 ### Definition of the SCF procedure
 
@@ -71,25 +71,40 @@ diemac       12
 ###################################################
 
 ### Dataset 1 : usual self-consistent calculation
-nstep1              200
-prtwf1              1 
-prtden1             0
-
+nstep1          200
+prtwf1          0 
+prtden1         1
+toldfe1         1.0d-6
+nshiftk1        1
+shiftk1         0.0 0.0 0.5
+## change for convergence
+ngkpt1          8 8 2
 
 ###################################################
   Section: Optic variables
 ###################################################
 
 ### Dataset 2 : optics and what not
-enunit2             1 
-getden2            -1
-irdwfk1             1
+enunit1             1 
+getden1             1
+iscf1              -2
+kptnrm1             1.0 
+kptopt1             0
+nband               30
+prtwf1              1
+tolwfr1             1.0d-12
+
+### Dataset 3 : variables for KSS file
+###             used to get the contribution of the non-local
+###             part of the pseudopotential to the 
+###             velocity matrix elements
+### For KSS set nbandkss3 with the same numerical values as nband
+nbandkss2           256
+### For KSS the following variables are a must
+getden2             1
 iscf2              -2
-kptnrm2             1.0 
 kptopt2             0
-nband2              30
-nstep1              0
-nstep2              200 
-prtden1             1
-prtwf2              1
-tolwfr2             1.0d-12
+prtwf2              0
+kssform2            3
+nsym2               1 
+###
