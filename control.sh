@@ -10,12 +10,12 @@ if [[ "$mode" == "run" ]]; then
     rklist.sh 13 13 2 abinit
     rlayer.sh 4.788090 1 4 1 1
     chose_layers.sh half-slab
-    #run_tiniba.sh -r setkp -k 19 -g 2 -G 2 
-    run_tiniba.sh -r run -k 19 -N half-slab -x 2 -C 4 -P -w -e -p
-    run_tiniba.sh -r run -k 19 -N half-slab -x 2 -c
-    all_responses.sh -w total -m 19_5-nospin -s 0.0 -o 1 -v 13 -c 17 -r 1 -t "xx"
-    all_responses.sh -w total -m 19_5-nospin -s 0.0 -o 1 -v 13 -c 17 -r 21 -t "xxx"
-    all_responses.sh -w layer -m 64_half-slab_5-nospin -s 0.0 -o 1 -v 13 -c 17 -r 44 -t "xxx"
+    #run_tiniba.sh -r setkp -k 40 -g 2 -G 2 
+    run_tiniba.sh -r run -k 40 -N half-slab -x 2 -C 4 -P 200 -w -e -p
+    run_tiniba.sh -r run -k 40 -N half-slab -x 2 -c
+    all_responses.sh -w total -m 40_5-nospin -s 0.0 -o 1 -v 13 -c 17 -r 1 -t "xx"
+    all_responses.sh -w total -m 40_5-nospin -s 0.0 -o 1 -v 13 -c 17 -r 21 -t "xxx"
+    all_responses.sh -w layer -m 40_half-slab_5-nospin -s 0.0 -o 1 -v 13 -c 17 -r 44 -t "xxx"
 elif [[ "$mode" == "clean" ]]; then
     run_tiniba.sh -r erase
     run_tiniba.sh -r erasescf
